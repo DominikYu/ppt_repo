@@ -1232,80 +1232,54 @@ video:focus { outline: none; }
 <!-- ═══════════════ S12: BENCHMARK DEEP DIVE ═══════════════ -->
 <div class="slide" id="s12">
   <div class="slide-tag">Quality validation · deep dive</div>
-  <h2>How the <span class="accent">Smoothness Score</span> works</h2>
-  <div class="cols cols-2 grow" style="margin-top: 20px; align-items: start;">
+  <h2>Benchmark results — <span class="accent">indoor & outdoor</span></h2>
+  <div class="cols cols-2 grow" style="margin-top: 16px; align-items: start;">
     <div class="vstack">
-      <div class="card" style="flex: 1;">
-        <h3 style="margin-bottom: 14px;">Four sub-components (equal weight)</h3>
-        <div class="vstack" style="gap: 12px;">
-          <div>
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
-              <span class="badge badge-blue">1</span>
-              <span style="font-size: 14px; font-weight: 600;">Geometric continuity</span>
-            </div>
-            <p style="font-size: 13px; padding-left: 50px;">Measures pixel-level offset of matched features between the last frame of camera A and the first frame of camera B. Score = 100 − (mean pixel error × k). A perfect match = 100.</p>
-          </div>
-          <div class="divider" style="margin: 0;"></div>
-          <div>
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
-              <span class="badge badge-blue">2</span>
-              <span style="font-size: 14px; font-weight: 600;">Color consistency</span>
-            </div>
-            <p style="font-size: 13px; padding-left: 50px;">Histogram intersection and mean chrominance delta (YCbCr) across overlapping scene regions. Accounts for different sensor white balance and exposure.</p>
-          </div>
-          <div class="divider" style="margin: 0;"></div>
-          <div>
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
-              <span class="badge badge-blue">3</span>
-              <span style="font-size: 14px; font-weight: 600;">Motion continuity</span>
-            </div>
-            <p style="font-size: 13px; padding-left: 50px;">Image-based solution vector field angular & magnitude consistency across the ±3 frames surrounding the cut. Catches jerky transitions invisible to geometry metrics.</p>
-          </div>
-          <div class="divider" style="margin: 0;"></div>
-          <div>
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
-              <span class="badge badge-blue">4</span>
-              <span style="font-size: 14px; font-weight: 600;">Temporal stability</span>
-            </div>
-            <p style="font-size: 13px; padding-left: 50px;">Frame-to-frame variance in the 10 frames post-cut. Penalises "settling" artifacts where MCT corrects slowly after the switch.</p>
-          </div>
+      <div style="display: flex; flex-direction: column; gap: 12px; flex: 1;">
+        <div class="video-wrap" style="flex: 1; background: var(--surface);">
+          <img src="mct_analysis_indoor.png" alt="MCT analysis — indoor" style="width:100%; height:100%; object-fit:contain; display:block;">
+        </div>
+        <div class="video-wrap" style="flex: 1; background: var(--surface);">
+          <img src="mct_analysis_outdoor.png" alt="MCT analysis — outdoor" style="width:100%; height:100%; object-fit:contain; display:block;">
         </div>
       </div>
     </div>
     <div class="vstack">
       <div class="card">
-        <h3 style="margin-bottom: 14px;">Score interpretation</h3>
-        <div style="margin-bottom: 18px;">
-          <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px;">
-            <span style="color: var(--muted);">Vidhance MCT target</span>
-            <span style="color: var(--green); font-weight: 600;">85–95 / 100</span>
+        <h3 style="margin-bottom: 14px;">Measuring components</h3>
+        <div class="vstack" style="gap: 10px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
+              <span class="badge badge-blue">T</span>
+              <span style="font-size: 14px; font-weight: 600;">Temporal stability</span>
+            </div>
+            <p style="font-size: 13px; padding-left: 44px;">Frame-to-frame variance after the switch. Detects "settling" artifacts where alignment corrects slowly over multiple frames.</p>
           </div>
-          <div class="bar-track" style="height: 10px; margin-bottom: 10px;">
-            <div class="bar-fill bar-green" data-width="90"></div>
+          <div class="divider" style="margin: 0;"></div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
+              <span class="badge badge-blue">M</span>
+              <span style="font-size: 14px; font-weight: 600;">Motion continuity</span>
+            </div>
+            <p style="font-size: 13px; padding-left: 44px;">Optical flow vector consistency across the cut. Ensures the scene motion — not just the image — transitions smoothly between cameras.</p>
           </div>
-          <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px;">
-            <span style="color: var(--muted);">Competitor (factory calibrated)</span>
-            <span style="color: var(--amber); font-weight: 600;">70–82 / 100</span>
+          <div class="divider" style="margin: 0;"></div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
+              <span class="badge badge-blue">P</span>
+              <span style="font-size: 14px; font-weight: 600;">Perceptual quality</span>
+            </div>
+            <p style="font-size: 13px; padding-left: 44px;">SSIM-based perceptual match at the transition frame. Measures luminance, contrast, and structural similarity as the human eye perceives it.</p>
           </div>
-          <div class="bar-track" style="height: 10px; margin-bottom: 10px;">
-            <div class="bar-fill" data-width="76" style="background: #d97706;"></div>
-          </div>
-          <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px;">
-            <span style="color: var(--muted);">Without MCT (raw cut)</span>
-            <span style="color: var(--red); font-weight: 600;">40–65 / 100</span>
-          </div>
-          <div class="bar-track" style="height: 10px;">
-            <div class="bar-fill" data-width="52" style="background: #dc2626;"></div>
+          <div class="divider" style="margin: 0;"></div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
+              <span class="badge badge-blue">A</span>
+              <span style="font-size: 14px; font-weight: 600;">Alignment accuracy</span>
+            </div>
+            <p style="font-size: 13px; padding-left: 44px;">Geometric correspondence error between cameras at switch time. Measures pixel-level offset of matched features across the seam.</p>
           </div>
         </div>
-        <div class="divider"></div>
-        <h3 style="margin-bottom: 8px; font-size: 14px;">What the numbers mean in practice</h3>
-        <ul style="font-size: 13px; color: var(--muted); line-height: 1.8; list-style: none; padding: 0;">
-          <li><span style="color: var(--green);">90+</span> — transition imperceptible to casual viewer</li>
-          <li><span style="color: var(--amber);">75–89</span> — visible only on close inspection or slow-motion</li>
-          <li><span style="color: var(--red);">60–74</span> — noticeable flash / shift in normal viewing</li>
-          <li><span style="color: var(--red);">&lt; 60</span> — jarring, clearly degraded UX</li>
-        </ul>
       </div>
       <div class="card" style="background: rgba(59,130,246,0.05); border-color: rgba(59,130,246,0.2);">
         <h3 style="font-size: 14px; margin-bottom: 6px; color: var(--accent2);">Measurement setup</h3>
