@@ -406,6 +406,42 @@ p {
 .bar-dim { background: var(--dim); }
 .bar-green { background: var(--green); }
 
+/* ===== Lightbox ===== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+.lightbox-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 8px 60px rgba(0,0,0,0.6);
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  line-height: 1;
+}
+.lightbox-close:hover { opacity: 1; }
+.chart-thumb {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
 /* ===== Stat card ===== */
 .stat-card {
   background: var(--surface);
@@ -1232,60 +1268,67 @@ video:focus { outline: none; }
 <div class="slide" id="s12">
   <div class="slide-tag">Quality validation · deep dive</div>
   <h2>Benchmark results — <span class="accent">indoor & outdoor</span></h2>
-  <div class="cols cols-2 grow" style="margin-top: 16px; align-items: start;">
-    <div class="vstack">
-      <div style="display: flex; flex-direction: column; gap: 12px; flex: 1;">
-        <div class="video-wrap" style="flex: 1; background: var(--surface);">
+  <div class="vstack grow" style="margin-top: 12px; gap: 12px;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1;">
+      <div class="chart-thumb" onclick="openLightbox('mct_analysis_indoor.png')" style="cursor:zoom-in;">
+        <div class="video-label">Indoor analysis</div>
+        <div class="video-wrap" style="flex:1;">
           <img src="mct_analysis_indoor.png" alt="MCT analysis — indoor" style="width:100%; height:100%; object-fit:contain; display:block;">
         </div>
-        <div class="video-wrap" style="flex: 1; background: var(--surface);">
+      </div>
+      <div class="chart-thumb" onclick="openLightbox('mct_analysis_outdoor.png')" style="cursor:zoom-in;">
+        <div class="video-label">Outdoor analysis</div>
+        <div class="video-wrap" style="flex:1;">
           <img src="mct_analysis_outdoor.png" alt="MCT analysis — outdoor" style="width:100%; height:100%; object-fit:contain; display:block;">
         </div>
       </div>
     </div>
-    <div class="vstack">
+    <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 12px;">
       <div class="card">
-        <h3 style="margin-bottom: 14px;">Measuring components</h3>
-        <div class="vstack" style="gap: 10px;">
+        <h3 style="margin-bottom: 10px;">Measuring components</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
           <div>
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
-              <span class="badge badge-blue">T</span>
-              <span style="font-size: 14px; font-weight: 600;">Temporal stability</span>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 3px;">
+              <span class="badge badge-blue" style="font-size:9px; padding:2px 7px;">T</span>
+              <span style="font-size: 13px; font-weight: 600;">Temporal</span>
             </div>
-            <p style="font-size: 13px; padding-left: 44px;">Frame-to-frame variance after the switch. Detects "settling" artifacts where alignment corrects slowly over multiple frames.</p>
+            <p style="font-size: 12px; padding-left: 31px;">Frame-to-frame variance after switch. Detects settling artifacts.</p>
           </div>
-          <div class="divider" style="margin: 0;"></div>
           <div>
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
-              <span class="badge badge-blue">M</span>
-              <span style="font-size: 14px; font-weight: 600;">Motion continuity</span>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 3px;">
+              <span class="badge badge-blue" style="font-size:9px; padding:2px 7px;">M</span>
+              <span style="font-size: 13px; font-weight: 600;">Motion</span>
             </div>
-            <p style="font-size: 13px; padding-left: 44px;">Optical flow vector consistency across the cut. Ensures the scene motion — not just the image — transitions smoothly between cameras.</p>
+            <p style="font-size: 12px; padding-left: 31px;">Optical flow consistency across the cut for smooth scene motion.</p>
           </div>
-          <div class="divider" style="margin: 0;"></div>
           <div>
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
-              <span class="badge badge-blue">P</span>
-              <span style="font-size: 14px; font-weight: 600;">Perceptual quality</span>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 3px;">
+              <span class="badge badge-blue" style="font-size:9px; padding:2px 7px;">P</span>
+              <span style="font-size: 13px; font-weight: 600;">Perceptual</span>
             </div>
-            <p style="font-size: 13px; padding-left: 44px;">SSIM-based perceptual match at the transition frame. Measures luminance, contrast, and structural similarity as the human eye perceives it.</p>
+            <p style="font-size: 12px; padding-left: 31px;">SSIM-based luminance, contrast & structure match at the cut.</p>
           </div>
-          <div class="divider" style="margin: 0;"></div>
           <div>
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
-              <span class="badge badge-blue">A</span>
-              <span style="font-size: 14px; font-weight: 600;">Alignment accuracy</span>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 3px;">
+              <span class="badge badge-blue" style="font-size:9px; padding:2px 7px;">A</span>
+              <span style="font-size: 13px; font-weight: 600;">Alignment</span>
             </div>
-            <p style="font-size: 13px; padding-left: 44px;">Geometric correspondence error between cameras at switch time. Measures pixel-level offset of matched features across the seam.</p>
+            <p style="font-size: 12px; padding-left: 31px;">Pixel-level geometric correspondence error at switch time.</p>
           </div>
         </div>
       </div>
       <div class="card" style="background: rgba(59,130,246,0.05); border-color: rgba(59,130,246,0.2);">
         <h3 style="font-size: 14px; margin-bottom: 6px; color: var(--accent2);">Measurement setup</h3>
-        <p style="font-size: 13px;">Score is computed frame-accurately on the ±5 frames around each detected camera switch event. Results are averaged across a standardised clip set (indoor static, indoor motion, outdoor static, outdoor motion).</p>
+        <p style="font-size: 12px;">Score computed frame-accurately on ±5 frames around each detected camera switch. Averaged across standardised clips (indoor static, indoor motion, outdoor static, outdoor motion).</p>
       </div>
     </div>
   </div>
+</div>
+
+<!-- Lightbox overlay -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()" style="display:none;">
+  <span class="lightbox-close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img" alt="Enlarged chart">
 </div>
 
 <!-- ═══════════════ S13: PROVEN ON HARDWARE ═══════════════ -->
@@ -1444,6 +1487,20 @@ video:focus { outline: none; }
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script>
+/* ── Lightbox ── */
+function openLightbox(src) {
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  img.src = src;
+  lb.style.display = 'flex';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+
 document.addEventListener('DOMContentLoaded', function() {
 const slides = document.querySelectorAll('.slide');
 const total = slides.length;
