@@ -894,34 +894,36 @@ video:focus { outline: none; }
   <div class="slide-tag">The Problem</div>
   <h2>Your users expect <span class="accent">invisible</span> camera switches</h2>
   <p class="lead">Every zoom tap is a UX test. Most Android phones fail it — and users notice, even if they can't name why.</p>
-  <div class="cols cols-2 grow" style="margin-top: 24px;">
-    <div class="vstack" style="gap: 12px;">
-      <div class="card">
-        <div class="badge badge-red" style="margin-bottom: 8px;">Alignment</div>
-        <h3>Geometric jump</h3>
-        <p style="font-size: 13px;">Objects snap to a different position at the cut. The scene visibly shifts — a hard discontinuity any user sees instantly.</p>
-      </div>
-      <div class="card">
-        <div class="badge badge-red" style="margin-bottom: 8px;">Perceptual</div>
-        <h3>Color & exposure flash</h3>
-        <p style="font-size: 13px;">Each sensor renders white balance, exposure, and tone differently. The scene "flashes" on switch — the most commonly reported user complaint.</p>
-      </div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; flex: 1; margin-top: 16px;">
+    <div class="card" style="overflow:hidden;">
+      <div class="badge badge-red" style="margin-bottom: 8px;">Alignment</div>
+      <h3>Geometric jump</h3>
+      <p style="font-size: 13px;">Objects shift position abruptly at the cut. The user sees the entire scene "snap" left or right — a hard discontinuity that breaks immersion. This is the most fundamental MCT failure: misalignment between the two camera views at the exact moment of switch. Even sub-pixel misalignment is perceptible on high-res displays.</p>
     </div>
-    <div class="vstack" style="gap: 12px;">
-      <div class="card">
-        <div class="badge badge-red" style="margin-bottom: 8px;">Motion</div>
-        <h3>Motion discontinuity</h3>
-        <p style="font-size: 13px;">Motion vectors don't align across cameras. The cut feels jerky and disorienting — like a stutter in an otherwise smooth pan.</p>
-      </div>
-      <div class="card">
-        <div class="badge badge-red" style="margin-bottom: 8px;">Temporal</div>
-        <h3>Post-switch settling</h3>
-        <p style="font-size: 13px;">Even after the cut, the image may drift or "breathe" as the new camera's AWB/AF converges. Users perceive a slow, unsteady recovery.</p>
-      </div>
+    <div class="card" style="overflow:hidden;">
+      <div class="badge badge-red" style="margin-bottom: 8px;">Perceptual</div>
+      <h3>Color & exposure flash</h3>
+      <p style="font-size: 13px;">Each sensor has its own white balance, AEC, and tone curve. At the cut, the scene temperature and brightness jump — a "flash" effect users consistently report as the most jarring artifact. MCT must match not just geometry but the perceptual appearance: luminance, contrast, and color temperature across the seam.</p>
+    </div>
+    <div class="card" style="overflow:hidden;">
+      <div class="badge badge-red" style="margin-bottom: 8px;">Motion</div>
+      <h3>Motion discontinuity</h3>
+      <p style="font-size: 13px;">Spatial alignment is not enough. The optical flow field must also be consistent across cameras — or the user feels a stutter mid-pan, as if playback skipped a frame. This is especially visible during video recording where the hand is constantly moving, even subtly.</p>
+    </div>
+    <div class="card" style="overflow:hidden;">
+      <div class="badge badge-red" style="margin-bottom: 8px;">Temporal</div>
+      <h3>Post-switch settling</h3>
+      <p style="font-size: 13px;">A perfect first frame is not enough. After switching, the new camera's AWB, AF, and AEC need time to converge — causing visible drift, breathing, or flicker for hundreds of milliseconds. Users perceive this as "the phone figuring itself out" — a cheap, unpolished feeling that erodes confidence in the camera system.</p>
     </div>
   </div>
-  <div class="callout" style="margin-top: 20px;">
-    These four dimensions — alignment, perceptual, motion, temporal — define whether a camera switch feels invisible or broken.
+  <div style="margin-top: 12px; display: grid; grid-template-columns: 3fr 2fr; gap: 12px;">
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px;">
+      <p style="font-size: 12px; color: var(--muted); margin-bottom: 4px;">Vidhance MCT addresses all four dimensions above — adapting at runtime without factory calibration.</p>
+    </div>
+    <div style="background: rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.12); border-radius: var(--radius); padding: 12px 16px;">
+      <p style="font-size: 12px; color: var(--muted); margin-bottom: 2px;">Hardware limitations beyond MCT scope:</p>
+      <p style="font-size: 11px; color: var(--dim);">Optical FOV change · native resolution difference · AF convergence speed · exposure convergence · rolling shutter · DoF mismatch · sensor noise profile</p>
+    </div>
   </div>
 </div>
 
