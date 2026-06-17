@@ -1,115 +1,107 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 300" width="1040" height="300" style="display:block;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 210" width="1040" height="210" style="display:block;">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f0f1a"/>
-      <stop offset="100%" stop-color="#0f1729"/>
-    </linearGradient>
     <linearGradient id="cg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="rgba(59,130,246,0.15)"/>
+      <stop offset="0%" stop-color="rgba(59,130,246,0.12)"/>
       <stop offset="100%" stop-color="rgba(59,130,246,0.03)"/>
     </linearGradient>
     <linearGradient id="og" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="rgba(34,197,94,0.12)"/>
+      <stop offset="0%" stop-color="rgba(34,197,94,0.10)"/>
       <stop offset="100%" stop-color="rgba(34,197,94,0.02)"/>
     </linearGradient>
-    <marker id="ar" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-      <path d="M0,0 L8,3 L0,6" fill="#64748b" />
+    <marker id="ar" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <path d="M0,0 L7,2.5 L0,5" fill="#475569" />
     </marker>
-    <marker id="ad" markerWidth="6" markerHeight="8" refX="3" refY="8" orient="auto">
-      <path d="M0,0 L3,8 L6,0" fill="#64748b" />
+    <marker id="ad" markerWidth="5" markerHeight="7" refX="2.5" refY="7" orient="auto">
+      <path d="M0,0 L2.5,7 L5,0" fill="#475569" />
     </marker>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <filter id="gl">
+      <feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
     <filter id="sh">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="rgba(0,0,0,0.25)"/>
+      <feDropShadow dx="0" dy="1.5" stdDeviation="3" flood-color="rgba(0,0,0,0.2)"/>
     </filter>
   </defs>
   <style>
-    .bg { fill: url(#bg); }
-    .bx { fill: #131c31; stroke: #1e2a45; stroke-width: 1.5; rx: 10; }
-    .cx { fill: url(#cg); stroke: rgba(59,130,246,0.35); stroke-width: 1.5; rx: 12; }
-    .ox { fill: url(#og); stroke: rgba(34,197,94,0.35); stroke-width: 1.5; rx: 10; }
-    .l { font-family: "Space Grotesk",system-ui,sans-serif; font-size: 13px; font-weight: 600; fill: #e2e8f0; text-anchor: middle; dominant-baseline: central; }
-    .s { font-family: "DM Sans",system-ui,sans-serif; font-size: 10px; fill: #94a3b8; text-anchor: middle; dominant-baseline: central; }
-    .lb { fill: #60a5fa; }
-    .lg { fill: #22c55e; }
-    .sg { fill: rgba(30,41,59,0.35); stroke: #1e2a45; stroke-width: 1; rx: 8; stroke-dasharray: 5,4; }
-    .st { font-family: "Space Grotesk",system-ui,sans-serif; font-size: 10px; fill: #475569; font-weight: 700; letter-spacing: 0.08em; }
-    .lt { font-family: "Space Grotesk",system-ui,sans-serif; font-size: 10px; font-weight: 700; fill: #64748b; dominant-baseline: central; letter-spacing: 0.08em; }
-    .le { font-family: "DM Sans",system-ui,sans-serif; font-size: 10px; fill: #94a3b8; dominant-baseline: central; }
-    .lgd { fill: rgba(15,15,26,0.55); stroke: #1e2a45; stroke-width: 1; rx: 6; }
+    .b  { fill: #131c31; stroke: #1e2a45; stroke-width: 1.5; rx: 8; }
+    .cb { fill: url(#cg); stroke: rgba(59,130,246,0.3); stroke-width: 1.5; rx: 10; }
+    .ob { fill: url(#og); stroke: rgba(34,197,94,0.3); stroke-width: 1.5; rx: 8; }
+    .t  { font-family: "Space Grotesk",system-ui,sans-serif; font-size: 12px; font-weight: 600; fill: #e2e8f0; text-anchor: middle; dominant-baseline: central; }
+    .st { font-family: "DM Sans",system-ui,sans-serif; font-size: 10px; fill: #94a3b8; text-anchor: middle; dominant-baseline: central; }
+    .tb { fill: #60a5fa; }
+    .tg { fill: #22c55e; }
     .ln { stroke: #475569; stroke-width: 1.5; fill: none; }
     .ld { stroke: #475569; stroke-width: 1.5; fill: none; }
+    .leg { fill: rgba(15,15,26,0.5); stroke: #1e2a45; stroke-width: 1; rx: 6; }
+    .lh { font-family: "Space Grotesk",system-ui,sans-serif; font-size: 9px; font-weight: 700; fill: #64748b; dominant-baseline: central; letter-spacing: 0.08em; }
+    .le { font-family: "DM Sans",system-ui,sans-serif; font-size: 9px; fill: #94a3b8; dominant-baseline: central; }
+    .ph { font-family: "DM Sans",system-ui,sans-serif; font-size: 9px; fill: #475569; dominant-baseline: central; letter-spacing: 0.04em; }
   </style>
-  <rect class="bg" width="1040" height="300" rx="12" />
 
-  <!-- Row 1: Input Analysis -->
-  <rect class="sg" x="14" y="16" width="362" height="80" />
-  <text class="st" x="24" y="24">INPUT ANALYSIS</text>
-  <rect class="bx" x="24" y="40" width="150" height="48" filter="url(#sh)" />
-  <text class="l" x="99" y="60">Sensor Data</text>
-  <text class="s" x="99" y="76">Analysis</text>
-  <line class="ln" x1="174" y1="64" x2="208" y2="64" marker-end="url(#ar)"/>
-  <rect class="bx" x="216" y="40" width="150" height="48" filter="url(#sh)" />
-  <text class="l" x="291" y="60">Image Based</text>
-  <text class="s" x="291" y="76">Analysis</text>
-  <line class="ln" x1="366" y1="64" x2="400" y2="64" marker-end="url(#ar)"/>
+  <!-- Row 1 -->
+  <text class="ph" x="20" y="18">SENSOR &amp; IMAGE PROCESSING</text>
 
-  <!-- Fusion Engine + Legend (side by side) -->
-  <rect class="sg" x="386" y="12" width="290" height="88" />
-  <text class="st" x="396" y="20">FUSION ENGINE</text>
-  <rect class="cx" x="400" y="28" width="262" height="64" filter="url(#sh)" />
-  <text class="l lb" x="531" y="54" filter="url(#glow)">MCT Intelligent</text>
-  <text class="l lb" x="531" y="70" filter="url(#glow)">Fusion Engine</text>
-  <text class="s" x="531" y="84">Multi-modal analysis &amp; fusion</text>
+  <rect class="b" x="20" y="28" width="145" height="44" filter="url(#sh)" />
+  <text class="t" x="92" y="46">Sensor Data</text>
+  <text class="st" x="92" y="62">Analysis</text>
+  <line class="ln" x1="165" y1="50" x2="195" y2="50" marker-end="url(#ar)"/>
 
-  <rect class="lgd" x="700" y="16" width="110" height="72" />
-  <text class="lt" x="710" y="30">LEGEND</text>
-  <rect x="710" y="40" width="8" height="8" rx="2" fill="rgba(59,130,246,0.6)" />
-  <text class="le" x="726" y="48">Core fusion</text>
-  <rect x="710" y="56" width="8" height="8" rx="2" fill="rgba(34,197,94,0.6)" />
-  <text class="le" x="726" y="64">Output</text>
-  <rect x="710" y="72" width="8" height="8" rx="2" fill="#131c31" stroke="#1e2a45" stroke-width="1" />
-  <text class="le" x="726" y="80">Process</text>
+  <rect class="b" x="200" y="28" width="145" height="44" filter="url(#sh)" />
+  <text class="t" x="272" y="46">Image Based</text>
+  <text class="st" x="272" y="62">Analysis</text>
+  <line class="ln" x1="345" y1="50" x2="375" y2="50" marker-end="url(#ar)"/>
+
+  <rect class="cb" x="380" y="24" width="230" height="52" filter="url(#sh)" />
+  <text class="t tb" x="495" y="44" filter="url(#gl)">MCT Intelligent Fusion Engine</text>
+  <text class="st" x="495" y="60">Multi-modal sensor &amp; image analysis</text>
 
   <!-- Down arrow -->
-  <line class="ld" x1="531" y1="100" x2="531" y2="164" marker-end="url(#ad)"/>
+  <line class="ld" x1="495" y1="76" x2="495" y2="116" marker-end="url(#ad)"/>
 
-  <!-- Row 2: Alignment → Output -->
-  <rect class="sg" x="380" y="158" width="646" height="72" />
-  <text class="st" x="390" y="166">ALIGNMENT → OUTPUT</text>
-  <rect class="bx" x="393" y="172" width="192" height="48" filter="url(#sh)" />
-  <text class="l" x="489" y="192">Alignment</text>
-  <text class="s" x="489" y="208">Estimation</text>
-  <line class="ln" x1="585" y1="196" x2="616" y2="196" marker-end="url(#ar)"/>
-  <rect class="bx" x="624" y="172" width="125" height="48" filter="url(#sh)" />
-  <text class="l" x="686" y="192">Warping</text>
-  <text class="s" x="686" y="208">Geometric correction</text>
-  <line class="ln" x1="749" y1="196" x2="780" y2="196" marker-end="url(#ar)"/>
-  <rect class="bx" x="788" y="172" width="125" height="48" filter="url(#sh)" />
-  <text class="l" x="850" y="192">Blending</text>
-  <text class="s" x="850" y="208">Photometric fusion</text>
-  <line class="ln" x1="913" y1="196" x2="944" y2="196" marker-end="url(#ar)"/>
-  <rect class="ox" x="952" y="167" width="120" height="58" filter="url(#sh)" />
-  <text class="l lg" x="1012" y="192">Seamless</text>
-  <text class="l lg" x="1012" y="208">Output</text>
+  <!-- Row 2 -->
+  <text class="ph" x="380" y="108">ALIGNMENT PIPELINE</text>
+
+  <rect class="b" x="380" y="118" width="220" height="44" filter="url(#sh)" />
+  <text class="t" x="490" y="136">Alignment</text>
+  <text class="st" x="490" y="152">Per-frame homography</text>
+  <line class="ln" x1="600" y1="140" x2="625" y2="140" marker-end="url(#ar)"/>
+
+  <rect class="b" x="630" y="118" width="120" height="44" filter="url(#sh)" />
+  <text class="t" x="690" y="136">Warping</text>
+  <text class="st" x="690" y="152">Geometric</text>
+  <line class="ln" x1="750" y1="140" x2="775" y2="140" marker-end="url(#ar)"/>
+
+  <rect class="b" x="780" y="118" width="120" height="44" filter="url(#sh)" />
+  <text class="t" x="840" y="136">Blending</text>
+  <text class="st" x="840" y="152">Photometric</text>
+  <line class="ln" x1="900" y1="140" x2="925" y2="140" marker-end="url(#ar)"/>
+
+  <rect class="ob" x="930" y="114" width="100" height="52" filter="url(#sh)" />
+  <text class="t tg" x="980" y="136">Seamless</text>
+  <text class="t tg" x="980" y="152">Output</text>
+
+  <!-- Legend -->
+  <rect class="leg" x="680" y="10" width="100" height="62" />
+  <text class="lh" x="690" y="22">LEGEND</text>
+  <rect x="690" y="30" width="7" height="7" rx="2" fill="rgba(59,130,246,0.5)" />
+  <text class="le" x="704" y="37">Core engine</text>
+  <rect x="690" y="44" width="7" height="7" rx="2" fill="rgba(34,197,94,0.5)" />
+  <text class="le" x="704" y="51">Output</text>
+  <rect x="690" y="58" width="7" height="7" rx="2" fill="#131c31" stroke="#1e2a45" stroke-width="1" />
+  <text class="le" x="704" y="65">Process</text>
 
   @media (prefers-color-scheme: light) {
-    .bg { fill: #ffffff; }
-    .bx { fill: #f1f4f9; stroke: #dce3ed; }
-    .cx { fill: rgba(37,99,235,0.04); stroke: rgba(37,99,235,0.25); }
-    .ox { fill: rgba(22,163,74,0.03); stroke: rgba(22,163,74,0.25); }
-    .l { fill: #0b1324; }
-    .s { fill: #55657d; }
-    .lb { fill: #2563eb; }
-    .lg { fill: #16a34a; }
+    .b { fill: #f1f4f9; stroke: #dce3ed; }
+    .cb { fill: rgba(37,99,235,0.04); stroke: rgba(37,99,235,0.2); }
+    .ob { fill: rgba(22,163,74,0.03); stroke: rgba(22,163,74,0.2); }
+    .t { fill: #0b1324; }
+    .st { fill: #55657d; }
+    .tb { fill: #2563eb; }
+    .tg { fill: #16a34a; }
     .ln { stroke: #94a3b8; }
     .ld { stroke: #94a3b8; }
-    .sg { fill: rgba(241,244,249,0.4); stroke: #dce3ed; }
-    .st { fill: #94a3b8; }
-    .lt { fill: #94a3b8; }
+    .ph { fill: #94a3b8; }
+    .leg { fill: rgba(255,255,255,0.85); stroke: #dce3ed; }
+    .lh { fill: #94a3b8; }
     .le { fill: #64748b; }
-    .lgd { fill: rgba(255,255,255,0.85); stroke: #dce3ed; }
   }
 </svg>
