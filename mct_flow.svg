@@ -55,7 +55,7 @@
   <text class="st" x="495" y="60">Multi-modal sensor &amp; image analysis</text>
 
   <!-- Down arrow -->
-  <line class="ld" x1="495" y1="76" x2="495" y2="116" marker-end="url(#ad)"/>
+  <line class="ld" x1="495" y1="76" x2="495" y2="122" marker-end="url(#ad)"/>
 
   <!-- Row 2 -->
   <text class="ph" x="380" y="108">ALIGNMENT PIPELINE</text>
