@@ -1,105 +1,115 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 240" width="1040" height="240" style="display:block;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 300" width="1040" height="300" style="display:block;">
   <defs>
-    <style>
-      .bg { fill: #0f1729; }
-      .box { fill: #1a2338; stroke: #1e2a45; stroke-width: 1.5; rx: 10; }
-      .box-core { fill: rgba(59,130,246,0.1); stroke: rgba(59,130,246,0.35); stroke-width: 1.5; rx: 12; }
-      .box-out { fill: rgba(34,197,94,0.06); stroke: rgba(34,197,94,0.35); stroke-width: 1.5; rx: 10; }
-      .arrow { fill: none; stroke: #475569; stroke-width: 1.5; marker-end: url(#arrowhead); }
-      .arrow-down { fill: none; stroke: #475569; stroke-width: 1.5; marker-end: url(#arrowhead); }
-      .label { font-family: 'DM Sans', system-ui, sans-serif; font-size: 11px; fill: #cbd5e1; text-anchor: middle; dominant-baseline: central; }
-      .label-title { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 11px; font-weight: 600; fill: #f1f5f9; text-anchor: middle; dominant-baseline: central; }
-      .label-sub { font-family: 'DM Sans', system-ui, sans-serif; font-size: 9px; fill: #94a3b8; text-anchor: middle; dominant-baseline: central; }
-      .label-core { fill: #60a5fa; }
-      .label-out { fill: #22c55e; }
-    </style>
-    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-      <path d="M0,0 L8,3 L0,6" fill="#475569" />
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0f1a"/>
+      <stop offset="100%" stop-color="#0f1729"/>
+    </linearGradient>
+    <linearGradient id="cg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(59,130,246,0.15)"/>
+      <stop offset="100%" stop-color="rgba(59,130,246,0.03)"/>
+    </linearGradient>
+    <linearGradient id="og" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(34,197,94,0.12)"/>
+      <stop offset="100%" stop-color="rgba(34,197,94,0.02)"/>
+    </linearGradient>
+    <marker id="ar" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#64748b" />
     </marker>
-    <marker id="arrowdown" markerWidth="6" markerHeight="8" refX="3" refY="8" orient="auto">
-      <path d="M0,0 L3,8 L6,0" fill="#475569" />
+    <marker id="ad" markerWidth="6" markerHeight="8" refX="3" refY="8" orient="auto">
+      <path d="M0,0 L3,8 L6,0" fill="#64748b" />
     </marker>
     <filter id="glow">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      <feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="sh">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="rgba(0,0,0,0.25)"/>
     </filter>
   </defs>
+  <style>
+    .bg { fill: url(#bg); }
+    .bx { fill: #131c31; stroke: #1e2a45; stroke-width: 1.5; rx: 10; }
+    .cx { fill: url(#cg); stroke: rgba(59,130,246,0.35); stroke-width: 1.5; rx: 12; }
+    .ox { fill: url(#og); stroke: rgba(34,197,94,0.35); stroke-width: 1.5; rx: 10; }
+    .l { font-family: "Space Grotesk",system-ui,sans-serif; font-size: 13px; font-weight: 600; fill: #e2e8f0; text-anchor: middle; dominant-baseline: central; }
+    .s { font-family: "DM Sans",system-ui,sans-serif; font-size: 10px; fill: #94a3b8; text-anchor: middle; dominant-baseline: central; }
+    .lb { fill: #60a5fa; }
+    .lg { fill: #22c55e; }
+    .sg { fill: rgba(30,41,59,0.35); stroke: #1e2a45; stroke-width: 1; rx: 8; stroke-dasharray: 5,4; }
+    .st { font-family: "Space Grotesk",system-ui,sans-serif; font-size: 10px; fill: #475569; font-weight: 700; letter-spacing: 0.08em; }
+    .lt { font-family: "Space Grotesk",system-ui,sans-serif; font-size: 10px; font-weight: 700; fill: #64748b; dominant-baseline: central; letter-spacing: 0.08em; }
+    .le { font-family: "DM Sans",system-ui,sans-serif; font-size: 10px; fill: #94a3b8; dominant-baseline: central; }
+    .lgd { fill: rgba(15,15,26,0.55); stroke: #1e2a45; stroke-width: 1; rx: 6; }
+    .ln { stroke: #475569; stroke-width: 1.5; fill: none; }
+    .ld { stroke: #475569; stroke-width: 1.5; fill: none; }
+  </style>
+  <rect class="bg" width="1040" height="300" rx="12" />
 
-  <!-- Background -->
-  <rect class="bg" width="1040" height="240" rx="12" />
+  <!-- Row 1: Input Analysis -->
+  <rect class="sg" x="14" y="16" width="362" height="80" />
+  <text class="st" x="24" y="24">INPUT ANALYSIS</text>
+  <rect class="bx" x="24" y="40" width="150" height="48" filter="url(#sh)" />
+  <text class="l" x="99" y="60">Sensor Data</text>
+  <text class="s" x="99" y="76">Analysis</text>
+  <line class="ln" x1="174" y1="64" x2="208" y2="64" marker-end="url(#ar)"/>
+  <rect class="bx" x="216" y="40" width="150" height="48" filter="url(#sh)" />
+  <text class="l" x="291" y="60">Image Based</text>
+  <text class="s" x="291" y="76">Analysis</text>
+  <line class="ln" x1="366" y1="64" x2="400" y2="64" marker-end="url(#ar)"/>
 
-  <!-- Row 1: Sensor data analysis -->
-  <rect class="box" x="20" y="30" width="150" height="52" />
-  <text class="label-title" x="95" y="56">Sensor Data</text>
-  <text class="label-sub" x="95" y="72">Analysis</text>
+  <!-- Fusion Engine + Legend (side by side) -->
+  <rect class="sg" x="386" y="12" width="290" height="88" />
+  <text class="st" x="396" y="20">FUSION ENGINE</text>
+  <rect class="cx" x="400" y="28" width="262" height="64" filter="url(#sh)" />
+  <text class="l lb" x="531" y="54" filter="url(#glow)">MCT Intelligent</text>
+  <text class="l lb" x="531" y="70" filter="url(#glow)">Fusion Engine</text>
+  <text class="s" x="531" y="84">Multi-modal analysis &amp; fusion</text>
 
-  <!-- Arrow 1→2 -->
-  <line class="arrow" x1="170" y1="56" x2="210" y2="56" />
+  <rect class="lgd" x="700" y="16" width="110" height="72" />
+  <text class="lt" x="710" y="30">LEGEND</text>
+  <rect x="710" y="40" width="8" height="8" rx="2" fill="rgba(59,130,246,0.6)" />
+  <text class="le" x="726" y="48">Core fusion</text>
+  <rect x="710" y="56" width="8" height="8" rx="2" fill="rgba(34,197,94,0.6)" />
+  <text class="le" x="726" y="64">Output</text>
+  <rect x="710" y="72" width="8" height="8" rx="2" fill="#131c31" stroke="#1e2a45" stroke-width="1" />
+  <text class="le" x="726" y="80">Process</text>
 
-  <!-- Row 1: Image based analysis -->
-  <rect class="box" x="210" y="30" width="150" height="52" />
-  <text class="label-title" x="285" y="56">Image Based</text>
-  <text class="label-sub" x="285" y="72">Analysis</text>
+  <!-- Down arrow -->
+  <line class="ld" x1="531" y1="100" x2="531" y2="164" marker-end="url(#ad)"/>
 
-  <!-- Arrow 2→3 -->
-  <line class="arrow" x1="360" y1="56" x2="400" y2="56" />
-
-  <!-- Row 1: MCT Intelligent Fusion Engine (wider, highlighted) -->
-  <rect class="box-core" x="400" y="20" width="240" height="72" />
-  <text class="label-title label-core" x="520" y="50" filter="url(#glow)">MCT Intelligent</text>
-  <text class="label-title label-core" x="520" y="66" filter="url(#glow)">Fusion Engine</text>
-  <text class="label-sub" x="520" y="82">Multi-modal analysis &amp; fusion</text>
-
-  <!-- Down arrow 3→4 -->
-  <line class="arrow-down" x1="520" y1="92" x2="520" y2="130" />
-
-  <!-- Row 2: Alignment estimation -->
-  <rect class="box" x="30" y="140" width="140" height="52" />
-  <text class="label-title" x="100" y="166">Alignment</text>
-  <text class="label-sub" x="100" y="182">Estimation</text>
-
-  <!-- Arrow 4→5 -->
-  <line class="arrow" x1="170" y1="166" x2="220" y2="166" />
-
-  <!-- Row 2: Warping -->
-  <rect class="box" x="220" y="140" width="130" height="52" />
-  <text class="label-title" x="285" y="166">Warping</text>
-  <text class="label-sub" x="285" y="182">Geometric correction</text>
-
-  <!-- Arrow 5→6 -->
-  <line class="arrow" x1="350" y1="166" x2="400" y2="166" />
-
-  <!-- Row 2: Blending -->
-  <rect class="box" x="400" y="140" width="130" height="52" />
-  <text class="label-title" x="465" y="166">Blending</text>
-  <text class="label-sub" x="465" y="182">Photometric fusion</text>
-
-  <!-- Arrow 6→7 -->
-  <line class="arrow" x1="530" y1="166" x2="590" y2="166" />
-
-  <!-- Row 2: Output -->
-  <rect class="box-out" x="590" y="135" width="120" height="62" />
-  <text class="label-title label-out" x="650" y="163">Seamless</text>
-  <text class="label-title label-out" x="650" y="179">Output</text>
-
-  <!-- Legend / labels -->
-  <text class="label-sub" x="870" y="40" fill="#475569">Processing pipeline</text>
-  <rect x="820" y="48" width="8" height="8" rx="2" fill="rgba(59,130,246,0.5)" />
-  <text class="label-sub" x="835" y="56">Core fusion stage</text>
-  <rect x="820" y="66" width="8" height="8" rx="2" fill="rgba(34,197,94,0.5)" />
-  <text class="label-sub" x="835" y="74">Output</text>
+  <!-- Row 2: Alignment → Output -->
+  <rect class="sg" x="380" y="158" width="646" height="72" />
+  <text class="st" x="390" y="166">ALIGNMENT → OUTPUT</text>
+  <rect class="bx" x="393" y="172" width="192" height="48" filter="url(#sh)" />
+  <text class="l" x="489" y="192">Alignment</text>
+  <text class="s" x="489" y="208">Estimation</text>
+  <line class="ln" x1="585" y1="196" x2="616" y2="196" marker-end="url(#ar)"/>
+  <rect class="bx" x="624" y="172" width="125" height="48" filter="url(#sh)" />
+  <text class="l" x="686" y="192">Warping</text>
+  <text class="s" x="686" y="208">Geometric correction</text>
+  <line class="ln" x1="749" y1="196" x2="780" y2="196" marker-end="url(#ar)"/>
+  <rect class="bx" x="788" y="172" width="125" height="48" filter="url(#sh)" />
+  <text class="l" x="850" y="192">Blending</text>
+  <text class="s" x="850" y="208">Photometric fusion</text>
+  <line class="ln" x1="913" y1="196" x2="944" y2="196" marker-end="url(#ar)"/>
+  <rect class="ox" x="952" y="167" width="120" height="58" filter="url(#sh)" />
+  <text class="l lg" x="1012" y="192">Seamless</text>
+  <text class="l lg" x="1012" y="208">Output</text>
 
   @media (prefers-color-scheme: light) {
     .bg { fill: #ffffff; }
-    .box { fill: #f1f4f9; stroke: #dce3ed; }
-    .box-core { fill: rgba(37,99,235,0.06); stroke: rgba(37,99,235,0.25); }
-    .box-out { fill: rgba(22,163,74,0.05); stroke: rgba(22,163,74,0.25); }
-    .label-title { fill: #0b1324; }
-    .label-sub { fill: #55657d; }
-    .label-core { fill: #2563eb; }
-    .label-out { fill: #16a34a; }
-    .arrow { stroke: #94a3b8; }
-    .arrow-down { stroke: #94a3b8; }
-    .arrowhead { fill: #94a3b8; }
+    .bx { fill: #f1f4f9; stroke: #dce3ed; }
+    .cx { fill: rgba(37,99,235,0.04); stroke: rgba(37,99,235,0.25); }
+    .ox { fill: rgba(22,163,74,0.03); stroke: rgba(22,163,74,0.25); }
+    .l { fill: #0b1324; }
+    .s { fill: #55657d; }
+    .lb { fill: #2563eb; }
+    .lg { fill: #16a34a; }
+    .ln { stroke: #94a3b8; }
+    .ld { stroke: #94a3b8; }
+    .sg { fill: rgba(241,244,249,0.4); stroke: #dce3ed; }
+    .st { fill: #94a3b8; }
+    .lt { fill: #94a3b8; }
+    .le { fill: #64748b; }
+    .lgd { fill: rgba(255,255,255,0.85); stroke: #dce3ed; }
   }
 </svg>
