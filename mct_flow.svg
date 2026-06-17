@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 240" width="1040" height="240" style="display:block;">
+  <defs>
+    <style>
+      .bg { fill: #0f1729; }
+      .box { fill: #1a2338; stroke: #1e2a45; stroke-width: 1.5; rx: 10; }
+      .box-core { fill: rgba(59,130,246,0.1); stroke: rgba(59,130,246,0.35); stroke-width: 1.5; rx: 12; }
+      .box-out { fill: rgba(34,197,94,0.06); stroke: rgba(34,197,94,0.35); stroke-width: 1.5; rx: 10; }
+      .arrow { fill: none; stroke: #475569; stroke-width: 1.5; marker-end: url(#arrowhead); }
+      .arrow-down { fill: none; stroke: #475569; stroke-width: 1.5; marker-end: url(#arrowhead); }
+      .label { font-family: 'DM Sans', system-ui, sans-serif; font-size: 11px; fill: #cbd5e1; text-anchor: middle; dominant-baseline: central; }
+      .label-title { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 11px; font-weight: 600; fill: #f1f5f9; text-anchor: middle; dominant-baseline: central; }
+      .label-sub { font-family: 'DM Sans', system-ui, sans-serif; font-size: 9px; fill: #94a3b8; text-anchor: middle; dominant-baseline: central; }
+      .label-core { fill: #60a5fa; }
+      .label-out { fill: #22c55e; }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#475569" />
+    </marker>
+    <marker id="arrowdown" markerWidth="6" markerHeight="8" refX="3" refY="8" orient="auto">
+      <path d="M0,0 L3,8 L6,0" fill="#475569" />
+    </marker>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect class="bg" width="1040" height="240" rx="12" />
+
+  <!-- Row 1: Sensor data analysis -->
+  <rect class="box" x="20" y="30" width="150" height="52" />
+  <text class="label-title" x="95" y="56">Sensor Data</text>
+  <text class="label-sub" x="95" y="72">Analysis</text>
+
+  <!-- Arrow 1→2 -->
+  <line class="arrow" x1="170" y1="56" x2="210" y2="56" />
+
+  <!-- Row 1: Image based analysis -->
+  <rect class="box" x="210" y="30" width="150" height="52" />
+  <text class="label-title" x="285" y="56">Image Based</text>
+  <text class="label-sub" x="285" y="72">Analysis</text>
+
+  <!-- Arrow 2→3 -->
+  <line class="arrow" x1="360" y1="56" x2="400" y2="56" />
+
+  <!-- Row 1: MCT Intelligent Fusion Engine (wider, highlighted) -->
+  <rect class="box-core" x="400" y="20" width="240" height="72" />
+  <text class="label-title label-core" x="520" y="50" filter="url(#glow)">MCT Intelligent</text>
+  <text class="label-title label-core" x="520" y="66" filter="url(#glow)">Fusion Engine</text>
+  <text class="label-sub" x="520" y="82">Multi-modal analysis &amp; fusion</text>
+
+  <!-- Down arrow 3→4 -->
+  <line class="arrow-down" x1="520" y1="92" x2="520" y2="130" />
+
+  <!-- Row 2: Alignment estimation -->
+  <rect class="box" x="30" y="140" width="140" height="52" />
+  <text class="label-title" x="100" y="166">Alignment</text>
+  <text class="label-sub" x="100" y="182">Estimation</text>
+
+  <!-- Arrow 4→5 -->
+  <line class="arrow" x1="170" y1="166" x2="220" y2="166" />
+
+  <!-- Row 2: Warping -->
+  <rect class="box" x="220" y="140" width="130" height="52" />
+  <text class="label-title" x="285" y="166">Warping</text>
+  <text class="label-sub" x="285" y="182">Geometric correction</text>
+
+  <!-- Arrow 5→6 -->
+  <line class="arrow" x1="350" y1="166" x2="400" y2="166" />
+
+  <!-- Row 2: Blending -->
+  <rect class="box" x="400" y="140" width="130" height="52" />
+  <text class="label-title" x="465" y="166">Blending</text>
+  <text class="label-sub" x="465" y="182">Photometric fusion</text>
+
+  <!-- Arrow 6→7 -->
+  <line class="arrow" x1="530" y1="166" x2="590" y2="166" />
+
+  <!-- Row 2: Output -->
+  <rect class="box-out" x="590" y="135" width="120" height="62" />
+  <text class="label-title label-out" x="650" y="163">Seamless</text>
+  <text class="label-title label-out" x="650" y="179">Output</text>
+
+  <!-- Legend / labels -->
+  <text class="label-sub" x="870" y="40" fill="#475569">Processing pipeline</text>
+  <rect x="820" y="48" width="8" height="8" rx="2" fill="rgba(59,130,246,0.5)" />
+  <text class="label-sub" x="835" y="56">Core fusion stage</text>
+  <rect x="820" y="66" width="8" height="8" rx="2" fill="rgba(34,197,94,0.5)" />
+  <text class="label-sub" x="835" y="74">Output</text>
+
+  @media (prefers-color-scheme: light) {
+    .bg { fill: #ffffff; }
+    .box { fill: #f1f4f9; stroke: #dce3ed; }
+    .box-core { fill: rgba(37,99,235,0.06); stroke: rgba(37,99,235,0.25); }
+    .box-out { fill: rgba(22,163,74,0.05); stroke: rgba(22,163,74,0.25); }
+    .label-title { fill: #0b1324; }
+    .label-sub { fill: #55657d; }
+    .label-core { fill: #2563eb; }
+    .label-out { fill: #16a34a; }
+    .arrow { stroke: #94a3b8; }
+    .arrow-down { stroke: #94a3b8; }
+    .arrowhead { fill: #94a3b8; }
+  }
+</svg>
