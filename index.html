@@ -846,6 +846,7 @@ video:focus { outline: none; }
   .nav { padding: 6px 14px; gap: 12px; }
   .global-footer { left: 20px; right: 20px; padding: 8px 16px 10px; font-size: 11px; }
   .global-footer svg { width: 80px; }
+  #s2 > div:not(.slide-tag):not(h2):not(p) { grid-template-columns: 1fr !important; }
 }
 
 @media (max-width: 640px) {
@@ -893,7 +894,7 @@ video:focus { outline: none; }
 <div class="slide" id="s2">
   <div class="slide-tag">The Problem</div>
   <h2>Your users expect <span class="accent">invisible</span> camera switches</h2>
-  <p class="lead">Every zoom tap is a UX test. Most Android phones fail it — and users notice, even if they can't name why.</p>
+  <p class="lead" style="max-width:none;">Every zoom tap is a UX test. Most Android phones fail it — and users notice, even if they can't name why.</p>
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; flex: 1; margin-top: 16px;">
     <div class="card" style="overflow:hidden;">
       <div class="badge badge-red" style="margin-bottom: 8px;">Alignment</div>
@@ -916,13 +917,29 @@ video:focus { outline: none; }
       <p style="font-size: 13px;">A perfect first frame is not enough. After switching, the new camera's AWB, AF, and AEC need time to converge — causing visible drift, breathing, or flicker for hundreds of milliseconds. Users perceive this as "the phone figuring itself out" — a cheap, unpolished feeling that erodes confidence in the camera system.</p>
     </div>
   </div>
-  <div style="margin-top: 12px; display: grid; grid-template-columns: 3fr 2fr; gap: 12px;">
-    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px;">
-      <p style="font-size: 12px; color: var(--muted); margin-bottom: 4px;">Vidhance MCT addresses all four dimensions above — adapting at runtime without factory calibration.</p>
+  <div style="margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+    <div style="background: rgba(34,197,94,0.04); border: 1px solid rgba(34,197,94,0.15); border-radius: var(--radius); padding: 10px 14px;">
+      <p style="font-size: 11px; color: var(--green); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px;">MCT can solve</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3px 16px; font-size: 12px; color: var(--muted);">
+        <span>• Scene jumps / snap at cut</span>
+        <span>• Color & exposure flash</span>
+        <span>• Jerky pan / motion stutter</span>
+        <span>• Post-switch wobble / drift</span>
+      </div>
     </div>
-    <div style="background: rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.12); border-radius: var(--radius); padding: 12px 16px;">
-      <p style="font-size: 12px; color: var(--muted); margin-bottom: 2px;">Hardware limitations beyond MCT scope:</p>
-      <p style="font-size: 11px; color: var(--dim);">Optical FOV change · native resolution difference · AF convergence speed · exposure convergence · rolling shutter · DoF mismatch · sensor noise profile</p>
+    <div style="background: rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.12); border-radius: var(--radius); padding: 10px 14px;">
+      <p style="font-size: 11px; color: var(--red); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px;">Hardware-bound (beyond MCT)</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3px 16px; font-size: 12px; color: var(--dim);">
+        <span>• FOV size change</span>
+        <span>• Resolution / detail drop</span>
+        <span>• Blur then AF recover</span>
+        <span>• Brightness flicker (AEC)</span>
+        <span>• Noise / grain change</span>
+        <span>• Bokeh / DoF shift</span>
+        <span>• Lens distortion change</span>
+        <span>• Frame skip on switch</span>
+        <span>• Rolling shutter wobble</span>
+      </div>
     </div>
   </div>
 </div>
