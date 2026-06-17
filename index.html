@@ -893,26 +893,35 @@ video:focus { outline: none; }
 <div class="slide" id="s2">
   <div class="slide-tag">The Problem</div>
   <h2>Your users expect <span class="accent">invisible</span> camera switches</h2>
-  <p class="lead">Every zoom tap is a UX test. Most Android phones fail it.</p>
-  <div class="cols cols-3 grow" style="margin-top: 28px; align-items: start;">
-    <div class="card">
-      <div class="badge badge-red" style="margin-bottom: 12px;">Visual</div>
-      <h3>Geometric jump</h3>
-      <p>Objects shift position abruptly at the cut — an obvious discontinuity visible to any user.</p>
+  <p class="lead">Every zoom tap is a UX test. Most Android phones fail it — and users notice, even if they can't name why.</p>
+  <div class="cols cols-2 grow" style="margin-top: 24px;">
+    <div class="vstack" style="gap: 12px;">
+      <div class="card">
+        <div class="badge badge-red" style="margin-bottom: 8px;">Alignment</div>
+        <h3>Geometric jump</h3>
+        <p style="font-size: 13px;">Objects snap to a different position at the cut. The scene visibly shifts — a hard discontinuity any user sees instantly.</p>
+      </div>
+      <div class="card">
+        <div class="badge badge-red" style="margin-bottom: 8px;">Perceptual</div>
+        <h3>Color & exposure flash</h3>
+        <p style="font-size: 13px;">Each sensor renders white balance, exposure, and tone differently. The scene "flashes" on switch — the most commonly reported user complaint.</p>
+      </div>
     </div>
-    <div class="card">
-      <div class="badge badge-red" style="margin-bottom: 12px;">Color</div>
-      <h3>Color mismatch</h3>
-      <p>Different sensors render color and exposure differently. Without alignment, the scene "flashes" on switch.</p>
-    </div>
-    <div class="card">
-      <div class="badge badge-red" style="margin-bottom: 12px;">Motion</div>
-      <h3>Motion discontinuity</h3>
-      <p>Motion vectors don't match across cameras. The cut feels jerky even in still scenes.</p>
+    <div class="vstack" style="gap: 12px;">
+      <div class="card">
+        <div class="badge badge-red" style="margin-bottom: 8px;">Motion</div>
+        <h3>Motion discontinuity</h3>
+        <p style="font-size: 13px;">Motion vectors don't align across cameras. The cut feels jerky and disorienting — like a stutter in an otherwise smooth pan.</p>
+      </div>
+      <div class="card">
+        <div class="badge badge-red" style="margin-bottom: 8px;">Temporal</div>
+        <h3>Post-switch settling</h3>
+        <p style="font-size: 13px;">Even after the cut, the image may drift or "breathe" as the new camera's AWB/AF converges. Users perceive a slow, unsteady recovery.</p>
+      </div>
     </div>
   </div>
-  <div class="callout" style="margin-top: 24px;">
-    "Once shipped, you can't recalibrate — and your users feel it every time they zoom."
+  <div class="callout" style="margin-top: 20px;">
+    These four dimensions — alignment, perceptual, motion, temporal — define whether a camera switch feels invisible or broken.
   </div>
 </div>
 
